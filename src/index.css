@@ -27,6 +27,26 @@ input {
   width: 100px;
 }
 
+.container{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.floater-div {
+  display: flex;
+  position: absolute;
+  justify-content: space-between;
+  padding: 5px;
+  border-radius: 20px;
+  background-color: whitesmoke;
+  bottom: 30px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
 
 .Red {
   background-color: red;

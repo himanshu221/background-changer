@@ -1,6 +1,8 @@
 import './App.css'
 import { RecoilRoot, useRecoilValue, useSetRecoilState } from 'recoil'
 import { backGroundColorAtom } from './store/atoms/color'
+import { memo } from 'react'
+
 
 function App() {
   return <RecoilRoot>
@@ -11,26 +13,10 @@ function App() {
 function ColorChanger() {
   const backgroundColor = useRecoilValue(backGroundColorAtom)
     return (
-      <div style={{
-        position: 'absolute',
-        display: 'flex',
-        justifyContent: 'center',
-        top: 0,
-        right: 0,
-        left: 0,
-        bottom: 0,
+      <div className='container' style={{
         backgroundColor: backgroundColor,
       }}>
-        <div style={{
-          display: 'flex',
-          position: 'absolute',
-          justifyContent: 'space-between',
-          padding: '5px',
-          borderRadius: '20px',
-          backgroundColor: 'whitesmoke',
-          bottom: '30px',
-          boxShadow: '0 0 20px rgba(0,0,0,0.5)'
-        }}>
+        <div className='floater-div'>
           <Button color={"Red"}/>
           <Button color={"Yellow"}/>
           <Button color={"Black"}/>
@@ -44,21 +30,23 @@ function ColorChanger() {
     )
 }
 
-function Input() {
+const Input = memo(() => {
   const setBackgroundColor = useSetRecoilState(backGroundColorAtom)
+
   return <input type="text" placeholder='Hex Value' onChange={(e) => {
     setBackgroundColor(e.target.value)
   }}/>
-}
+})
 
-function Button({color}) {
+const  Button = memo(({color}) => {
   const setBackgroundColor = useSetRecoilState(backGroundColorAtom)
+  
   return <button className={color} onClick={() => {
     if(color == 'Default')
       setBackgroundColor('wheat')
     else
       setBackgroundColor(color)
   }}>{color}</button>
-}
+})
 
 export default App
