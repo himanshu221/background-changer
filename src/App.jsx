@@ -1,6 +1,3 @@
-import { useRef, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import { RecoilRoot, useRecoilValue, useSetRecoilState } from 'recoil'
 import { backGroundColorAtom } from './store/atoms/color'
@@ -32,7 +29,7 @@ function ColorChanger() {
           borderRadius: '20px',
           backgroundColor: 'whitesmoke',
           bottom: '30px',
-          boxShadow: '0 0 10px rgba(0,0,0,0.2)'
+          boxShadow: '0 0 20px rgba(0,0,0,0.5)'
         }}>
           <Button color={"Red"}/>
           <Button color={"Yellow"}/>
@@ -41,9 +38,17 @@ function ColorChanger() {
           <Button color={"Green"}/>
           <Button color={"Blue"}/>
           <Button color={"Default"}/>
+          <Input />
         </div>
       </div>
     )
+}
+
+function Input() {
+  const setBackgroundColor = useSetRecoilState(backGroundColorAtom)
+  return <input type="text" placeholder='Hex Value' onChange={(e) => {
+    setBackgroundColor(e.target.value)
+  }}/>
 }
 
 function Button({color}) {
@@ -55,4 +60,5 @@ function Button({color}) {
       setBackgroundColor(color)
   }}>{color}</button>
 }
+
 export default App

@@ -16,6 +16,17 @@ button {
   transition: border-color 0.25s;
 }
 
+input {
+  margin: 10px;
+  border-radius: 5px;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  border-width: 1px;
+  text-align: center;
+  width: 100px;
+}
+
 
 .Red {
   background-color: red;
