@@ -42,7 +42,7 @@ const  Button = memo(({color}) => {
   const setBackgroundColor = useSetRecoilState(backGroundColorAtom)
   
   return <button className={color} onClick={() => {
-    if(color == 'Default')
+    if(color === 'Default')
       setBackgroundColor('wheat')
     else
       setBackgroundColor(color)
